@@ -85,4 +85,16 @@ ide-helper:
 	docker compose exec app php artisan clear-compiled
 	docker compose exec app php artisan ide-helper:generate
 	docker compose exec app php artisan ide-helper:meta
-	docker compose exec app php artisan ide-helper:models --nowrite
+	docker compose exec app php artisan ide-helper:models --write --reset
+pint:
+	docker compose exec app ./vendor/bin/pint
+pint-v:
+	docker compose exec app ./vendor/bin/pint -v
+pint-test:
+	docker compose exec app ./vendor/bin/pint --test
+pint-test-v:
+	docker compose exec app ./vendor/bin/pint --test -v
+insights:
+	docker compose exec app php artisan insights --fix
+insights-test:
+	docker compose exec app php artisan insights
