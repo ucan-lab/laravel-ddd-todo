@@ -1,11 +1,11 @@
 {
     "preset": "laravel",
     "rules": {
+        "concat_space": false,
         "date_time_immutable": true,
         "declare_parentheses": true,
         "declare_strict_types": true,
         "final_class": true,
-        "final_public_method_for_abstract_class": true,
         "global_namespace_import": {
             "import_classes": true,
             "import_constants": true,
@@ -13,6 +13,7 @@
         },
         "mb_str_functions": true,
         "not_operator_with_successor_space": true,
+        "no_superfluous_phpdoc_tags": true,
         "phpdoc_align": {
             "align": "left"
         },
@@ -20,6 +21,7 @@
             "call_type": "this"
         },
         "simplified_if_return": true,
-        "simplified_null_return": true
+        "simplified_null_return": true,
+        "Laravel/laravel_phpdoc_separation": false
     }
 }

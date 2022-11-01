@@ -17,16 +17,12 @@ services:
         target: /root/.config/psysh
         volume:
           nocopy: true
-    environment:
-      - APP_DEBUG=${APP_DEBUG:-true}
-      - APP_KEY=${APP_KEY:-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
-      - APP_ENV=${APP_ENV:-local}
-      - APP_URL=${APP_URL:-http://localhost}
 
   web:
     build:
       context: .
       dockerfile: ./infra/docker/nginx/Dockerfile
+      target: ${APP_BUILD_TARGET:-development}
     ports:
       - target: 80
         published: ${WEB_PUBLISHED_PORT:-80}
