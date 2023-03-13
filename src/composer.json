@@ -19,7 +19,7 @@
         "nunomaduro/collision": "^6.1",
         "nunomaduro/larastan": "^2.2",
         "nunomaduro/phpinsights": "^2.6",
-        "phpunit/phpunit": "^9.5.10",
+        "phpunit/phpunit": "^10.0.0",
         "spatie/laravel-ignition": "^1.0"
     },
     "autoload": {
