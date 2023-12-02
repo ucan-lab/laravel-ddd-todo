@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Todo\Application\User;
 
-final class UserRegisterUseCaseOutput
+final readonly class UserRegisterUseCaseOutput
 {
-    public function __construct(public readonly string $userId)
+    public function __construct(public string $userId)
     {
     }
 }

@@ -11,11 +11,11 @@ use Todo\Domain\Model\Task\TaskId;
 use Todo\Domain\Model\Task\TaskRepository;
 use Todo\Lang\UlidFactory;
 
-final class TaskDoneUseCase
+final readonly class TaskDoneUseCase
 {
     public function __construct(
-        private readonly TaskRepository $taskRepository,
-        private readonly ActivityReportRepository $activityReportRepository,
+        private TaskRepository $taskRepository,
+        private ActivityReportRepository $activityReportRepository,
     ) {
     }
 

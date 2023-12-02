@@ -16,8 +16,8 @@ use Todo\Lang\Clock;
 final readonly class MailPasswordResetNotificationSender implements PasswordResetNotificationSender
 {
     public function __construct(
-        private Mailer       $mailer,
-        private Clock        $clock,
+        private Mailer $mailer,
+        private Clock $clock,
         private UrlGenerator $urlGenerator,
     ) {
     }

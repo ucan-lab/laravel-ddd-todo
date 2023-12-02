@@ -39,8 +39,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('logout', LogoutController::class)->name('logout');
     Route::redirect('dashboard', 'tasks')->name('dashboard');
-//    Route::view('profile', 'profile')->name('profile');
-//    Route::put('profile', 'profile')->name('profile.update');
+    // Route::view('profile', 'profile')->name('profile');
+    // Route::put('profile', 'profile')->name('profile.update');
 
     Route::get('tasks', TaskIndexController::class)->name('tasks.index');
     Route::post('tasks', TaskStoreController::class)->name('tasks.store');

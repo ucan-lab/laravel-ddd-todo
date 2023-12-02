@@ -6,10 +6,10 @@ namespace Todo\Application\Task;
 
 use Todo\Domain\Model\Task\TaskList;
 
-final class TaskListUseCaseOutput
+final readonly class TaskListUseCaseOutput
 {
     public function __construct(
-        public readonly TaskList $taskList,
+        public TaskList $taskList,
     ) {
     }
 }

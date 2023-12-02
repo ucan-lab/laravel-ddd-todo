@@ -11,13 +11,13 @@ use Todo\Domain\Model\User\UserRepository;
 use Todo\Domain\Service\User\CheckDuplicateUserService;
 use Todo\Lang\UnitOfWork;
 
-final class UserRegisterUseCase
+final readonly class UserRegisterUseCase
 {
     public function __construct(
-        private readonly UserFactory $userFactory,
-        private readonly UnitOfWork $unitOfWork,
-        private readonly CheckDuplicateUserService $checkDuplicateUserService,
-        private readonly UserRepository $userRepository,
+        private UserFactory $userFactory,
+        private UnitOfWork $unitOfWork,
+        private CheckDuplicateUserService $checkDuplicateUserService,
+        private UserRepository $userRepository,
     ) {
     }
 

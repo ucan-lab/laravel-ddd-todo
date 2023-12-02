@@ -9,10 +9,10 @@ use Todo\Domain\Model\Task\TaskRepository;
 use Todo\Domain\Model\Task\TaskSearchCondition;
 use Todo\Domain\Model\User\UserId;
 
-final class TaskListUseCase
+final readonly class TaskListUseCase
 {
     public function __construct(
-        private readonly TaskRepository $repository,
+        private TaskRepository $repository,
     ) {
     }
 

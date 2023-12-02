@@ -13,12 +13,12 @@ use Todo\Domain\Model\Task\TaskRepository;
 use Todo\Domain\Model\User\UserId;
 use Todo\Lang\UlidFactory;
 
-final class TaskCreateUseCase
+final readonly class TaskCreateUseCase
 {
     public function __construct(
-        private readonly TaskFactory $taskFactory,
-        private readonly TaskRepository $taskRepository,
-        private readonly ActivityReportRepository $activityReportRepository,
+        private TaskFactory $taskFactory,
+        private TaskRepository $taskRepository,
+        private ActivityReportRepository $activityReportRepository,
     ) {
     }
 

@@ -6,12 +6,12 @@ namespace Todo\Application\Task;
 
 use DateTimeImmutable;
 
-final class TaskCreateUseCaseInput
+final readonly class TaskCreateUseCaseInput
 {
     public function __construct(
-        public readonly string $userId,
-        public readonly string $name,
-        public readonly DateTimeImmutable $dueDate
+        public string $userId,
+        public string $name,
+        public DateTimeImmutable $dueDate
     ) {
     }
 }
