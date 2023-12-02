@@ -1,3 +1,9 @@
+tinker:
+	php artisan tinker
+dump:
+	php artisan dump-server
+test:
+	php artisan test
 migrate:
 	php artisan migrate
 fresh:
@@ -9,10 +15,6 @@ dacapo:
 rollback-test:
 	php artisan migrate:fresh
 	php artisan migrate:refresh
-tinker:
-	php artisan tinker
-test:
-	php artisan test
 optimize:
 	php artisan optimize
 optimize-clear:
@@ -32,13 +34,9 @@ ide-helper:
 	php artisan ide-helper:meta
 	php artisan ide-helper:models --write --reset
 pint:
-	./vendor/bin/pint
-pint-v:
 	./vendor/bin/pint -v
 pint-test:
-	./vendor/bin/pint --test
-pint-test-v:
-	./vendor/bin/pint --test -v
+	./vendor/bin/pint -v --test
 insights:
 	php artisan insights --fix
 insights-test:
