@@ -10,6 +10,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Todo\Application\Password\SendPasswordResetUseCase;
 use Todo\Application\Password\SendPasswordResetUseCaseInput;
+use Todo\Domain\Model\User\NotFoundUserException;
 
 final class ForgotPasswordController extends Controller
 {
@@ -19,9 +20,14 @@ final class ForgotPasswordController extends Controller
     public function __invoke(ForgotPasswordRequest $request, SendPasswordResetUseCase $useCase): RedirectResponse
     {
         $email = $request->input('email');
-
         $input = new SendPasswordResetUseCaseInput($email);
-        $useCase->send($input);
+
+        try {
+            $useCase->send($input);
+        } catch (NotFoundUserException) {
+            return $this->redirector->back()
+                ->with(self::SESSION_FAILURE, '入力されたメールアドレスは存在しません。');
+        }
 
         return $this->redirector->back()
             ->with(self::SESSION_SUCCESS, 'パスワードリセットメールを送信しました。');

@@ -33,7 +33,7 @@
                                     <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Login</button>
                                 </div>
                                 <div class="uk-text-small uk-text-center">
-                                    Not registered? <a href="{{ route('register') }}">Create an account</a>
+                                    Not registered? <a href="{{ route('sign-up') }}">Create an account</a>
                                 </div>
                                 <div class="uk-text-small uk-text-center">
                                     Forgot password? <a href="{{ route('auth.forgot-password.form') }}">Send password resets</a>

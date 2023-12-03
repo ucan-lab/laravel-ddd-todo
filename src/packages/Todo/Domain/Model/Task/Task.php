@@ -11,15 +11,15 @@ use Todo\Domain\Model\User\UserId;
 /**
  * タスク
  */
-final class Task
+final readonly class Task
 {
     public function __construct(
-        private readonly TaskId $id,
-        private readonly UserId $userId,
-        private readonly string $name,
-        private readonly Status $status,
-        private readonly DateTimeImmutable $dueDate,
-        private readonly PostponeCount $postponeCount,
+        private TaskId $id,
+        private UserId $userId,
+        private string $name,
+        private Status $status,
+        private DateTimeImmutable $dueDate,
+        private PostponeCount $postponeCount,
     ) {
     }
 

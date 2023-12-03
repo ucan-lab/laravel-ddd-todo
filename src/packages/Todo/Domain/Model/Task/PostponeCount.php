@@ -6,11 +6,11 @@ namespace Todo\Domain\Model\Task;
 
 use InvalidArgumentException;
 
-final class PostponeCount
+final readonly class PostponeCount
 {
-    private const MAX_POSTPONE_COUNT = 3;
+    private const int MAX_POSTPONE_COUNT = 3;
 
-    private function __construct(private readonly int $value)
+    private function __construct(private int $value)
     {
     }
 

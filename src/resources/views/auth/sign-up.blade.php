@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Register')
+@section('title', 'Sign Up')
 @section('header', '')
 
 @section('main')
@@ -10,8 +10,8 @@
                 <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
                     <div class="uk-width-1-1@m">
                         <div class="uk-margin uk-width-xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
-                            <h3 class="uk-card-title uk-text-center">Task App Register</h3>
-                            <form action="{{ route('register') }}" method="post">
+                            <h3 class="uk-card-title uk-text-center">Task App Sign Up</h3>
+                            <form action="{{ route('sign-up') }}" method="post">
                                 @csrf
 
                                 <div class="uk-margin">
@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
                                 <div class="uk-margin">
-                                    <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Register</button>
+                                    <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Sign Up</button>
                                 </div>
                                 <div class="uk-text-small uk-text-center">
                                     Already have an account? <a href="{{ route('login') }}" uk-switcher-item="1">Log in</a>

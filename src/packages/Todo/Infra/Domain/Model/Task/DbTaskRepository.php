@@ -6,9 +6,9 @@ namespace Todo\Infra\Domain\Model\Task;
 
 use App\Models\Task as EloquentTask;
 use Illuminate\Contracts\Database\Query\Builder;
+use Todo\Domain\Model\Task\NotFoundTaskException;
 use Todo\Domain\Model\Task\Task;
 use Todo\Domain\Model\Task\TaskFactory;
-use Todo\Domain\Model\Task\TaskId;
 use Todo\Domain\Model\Task\TaskList;
 use Todo\Domain\Model\Task\TaskRepository;
 use Todo\Domain\Model\Task\TaskSearchCondition;
@@ -19,9 +19,13 @@ final readonly class DbTaskRepository implements TaskRepository
     {
     }
 
-    public function restoreById(TaskId $id): Task
+    public function restoreById(string $id): Task
     {
-        $eloquentTask = EloquentTask::findOrFail($id->id());
+        $eloquentTask = EloquentTask::find($id);
+
+        if ($eloquentTask === null) {
+            throw new NotFoundTaskException('タスクが見つかりません。');
+        }
 
         return $this->taskFactory->fromRepository(
             $eloquentTask->id,

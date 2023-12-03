@@ -20,7 +20,7 @@
                 <div class="uk-navbar-right">
                     <ul class="uk-navbar-nav">
                         <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
+                        <li><a href="{{ route('sign-up') }}">Register</a></li>
                     </ul>
                 </div>
             @endguest

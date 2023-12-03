@@ -14,7 +14,7 @@ final class TaskEditController extends Controller
     {
         return $this->viewFactory->make('tasks.edit', [
             'taskId' => $task->id,
-            'name' => $task->name,
+            'taskName' => $task->name,
         ]);
     }
 }

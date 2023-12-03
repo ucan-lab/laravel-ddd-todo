@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Request\Register\RegisterRequest;
+use App\Http\Request\Register\SignUpRequest;
 use Illuminate\Http\RedirectResponse;
 use Throwable;
 use Todo\Application\User\UserRegisterUseCase;
@@ -13,7 +13,7 @@ use Todo\Application\User\UserRegisterUseCaseInput;
 
 final class SignUpController extends Controller
 {
-    public function __invoke(RegisterRequest $request, UserRegisterUseCase $useCase): RedirectResponse
+    public function __invoke(SignUpRequest $request, UserRegisterUseCase $useCase): RedirectResponse
     {
         $input = new UserRegisterUseCaseInput(
             (string) $request->input('name'),

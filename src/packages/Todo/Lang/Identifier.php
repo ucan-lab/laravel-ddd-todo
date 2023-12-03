@@ -15,6 +15,11 @@ abstract readonly class Identifier
         return $this->id->id();
     }
 
+    final public function equals(string $id): bool
+    {
+        return $this->id->id() === $id;
+    }
+
     /**
      * @return $this
      */

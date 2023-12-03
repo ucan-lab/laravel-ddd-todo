@@ -13,7 +13,7 @@
                             <h2 class="uk-card-title uk-text-center uk-margin-large-bottom">Welcome to Task App</h2>
                             <div class="uk-text-center">
                                 <a class="uk-button uk-button-primary" href="{{ route('login') }}">Login</a>
-                                <a class="uk-button uk-button-secondary" href="{{ route('register') }}">Register</a>
+                                <a class="uk-button uk-button-secondary" href="{{ route('sign-up') }}">Sign Up</a>
                             </div>
                         </div>
                     </div>

@@ -44,8 +44,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('tasks', TaskIndexController::class)->name('tasks.index');
     Route::post('tasks', TaskStoreController::class)->name('tasks.store');
-    Route::post('tasks/{taskId}/done', TaskDoneController::class)->name('tasks.done');
-    Route::post('tasks/{taskId}/postpone', TaskPostponeController::class)->name('tasks.postpone');
-    Route::get('tasks/{taskId}/edit', TaskEditController::class)->name('tasks.edit');
-    Route::put('tasks/{taskId}', TaskUpdateController::class)->name('tasks.update');
+    Route::post('tasks/{task}/done', TaskDoneController::class)->name('tasks.done');
+    Route::post('tasks/{task}/postpone', TaskPostponeController::class)->name('tasks.postpone');
+    Route::get('tasks/{task}/edit', TaskEditController::class)->name('tasks.edit');
+    Route::put('tasks/{task}', TaskUpdateController::class)->name('tasks.update');
 });

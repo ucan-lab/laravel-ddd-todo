@@ -6,7 +6,7 @@ namespace Todo\Domain\Model\Task;
 
 interface TaskRepository
 {
-    public function restoreById(TaskId $id): Task;
+    public function restoreById(string $id): Task;
 
     public function restoreByCondition(TaskSearchCondition $condition): TaskList;
 

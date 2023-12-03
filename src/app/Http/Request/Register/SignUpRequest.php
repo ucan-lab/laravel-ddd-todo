@@ -6,7 +6,7 @@ namespace App\Http\Request\Register;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-final class RegisterRequest extends FormRequest
+final class SignUpRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

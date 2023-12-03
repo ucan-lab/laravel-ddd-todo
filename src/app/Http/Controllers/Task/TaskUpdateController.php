@@ -19,7 +19,7 @@ final class TaskUpdateController extends Controller
      */
     public function __invoke(
         TaskUpdateRequest $request,
-        TaskCreateUseCase $useCase
+        TaskCreateUseCase $useCase,
     ): RedirectResponse {
         $input = new TaskCreateUseCaseInput(
             $this->auth->id(),

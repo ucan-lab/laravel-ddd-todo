@@ -6,6 +6,6 @@ namespace Todo\Domain\Model\User;
 
 use RuntimeException;
 
-final class DuplicateUserException extends RuntimeException
+final class NotFoundUserException extends RuntimeException
 {
 }

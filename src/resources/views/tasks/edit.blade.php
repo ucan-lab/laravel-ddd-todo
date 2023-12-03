@@ -10,7 +10,7 @@
         <div class="uk-margin">
             <label class="uk-form-label" for="form-stacked-text">Name</label>
             <div class="uk-form-controls">
-                <input class="uk-input" id="form-stacked-text" type="text" value="{{ $name }}">
+                <input class="uk-input" id="form-stacked-text" type="text" value="{{ $taskName }}">
             </div>
         </div>
 

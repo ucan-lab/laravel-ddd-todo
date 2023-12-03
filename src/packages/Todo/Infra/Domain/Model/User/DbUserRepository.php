@@ -7,20 +7,37 @@ namespace Todo\Infra\Domain\Model\User;
 use App\Models\User as EloquentUser;
 use Illuminate\Support\Facades\Hash;
 use Todo\Domain\Model\User\Email;
+use Todo\Domain\Model\User\NotFoundUserException;
 use Todo\Domain\Model\User\User;
 use Todo\Domain\Model\User\UserFactory;
 use Todo\Domain\Model\User\UserRepository;
 
 final readonly class DbUserRepository implements UserRepository
 {
-    public function restoreByEmail(Email $email): ?User
+    public function restoreById(string $id): User
+    {
+        $eloquentUser = EloquentUser::find($id);
+
+        if ($eloquentUser === null) {
+            throw new NotFoundUserException('存在しないユーザーです。');
+        }
+
+        return UserFactory::fromRepository(
+            $eloquentUser->id,
+            $eloquentUser->name,
+            $eloquentUser->email,
+            $eloquentUser->password,
+        );
+    }
+
+    public function restoreByEmail(Email $email): User
     {
         $eloquentUser = EloquentUser::query()
             ->where('email', $email->value())
             ->first();
 
         if ($eloquentUser === null) {
-            return null;
+            throw new NotFoundUserException('存在しないユーザーです。');
         }
 
         return UserFactory::fromRepository(

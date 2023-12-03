@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Todo\Domain\Model\User;
 
+use Todo\Domain\Model\Task\Task;
+
 final readonly class User
 {
     public function __construct(
@@ -47,5 +49,10 @@ final readonly class User
     public function passwordValue(): string
     {
         return $this->password->value();
+    }
+
+    public function hasTask(Task $task): bool
+    {
+        return $this->id->equals($task->userId());
     }
 }
