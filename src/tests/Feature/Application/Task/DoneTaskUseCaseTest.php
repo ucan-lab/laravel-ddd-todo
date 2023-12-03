@@ -8,11 +8,11 @@ use App\Models\Task;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Todo\Application\Task\TaskDoneUseCase;
-use Todo\Application\Task\TaskDoneUseCaseInput;
-use Todo\Application\Task\TaskDoneUseCaseOutput;
+use Todo\Application\Task\DoneTaskUseCase;
+use Todo\Application\Task\DoneTaskUseCaseInput;
+use Todo\Application\Task\DoneTaskUseCaseOutput;
 
-final class TaskDoneUseCaseTest extends TestCase
+final class DoneTaskUseCaseTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -24,9 +24,9 @@ final class TaskDoneUseCaseTest extends TestCase
         /** @var Task $task */
         $task = Task::factory()->for($user)->undone()->create();
 
-        $input = new TaskDoneUseCaseInput($task->id);
-        $output = $this->app->make(TaskDoneUseCase::class)->done($input);
+        $input = new DoneTaskUseCaseInput($task->id);
+        $output = $this->app->make(DoneTaskUseCase::class)->done($input);
 
-        $this->assertTrue($output instanceof TaskDoneUseCaseOutput);
+        $this->assertTrue($output instanceof DoneTaskUseCaseOutput);
     }
 }

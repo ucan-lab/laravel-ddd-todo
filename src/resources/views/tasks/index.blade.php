@@ -32,13 +32,13 @@
                         <td class="uk-text-right">{{ $task['postponeCount'] }}</td>
                         <td>
                             <div class="uk-flex">
-                                <form action="{{ route('tasks.postpone', ['taskId' => $task['id']]) }}" method="post" class="uk-margin-small-right">
+                                <form action="{{ route('tasks.postpone', $task['id']) }}" method="post">
                                     @csrf
-                                    <button class="uk-button uk-button-small uk-button-danger " type="submit">Postpone</button>
+                                    <button class="uk-button uk-button-small uk-button-danger uk-margin-small-right" type="submit">Postpone</button>
                                 </form>
-                                <form action="{{ route('tasks.done', ['taskId' => $task['id']]) }}" method="post">
+                                <form action="{{ route('tasks.done', $task['id']) }}" method="post">
                                     @csrf
-                                    <button class="uk-button uk-button-small uk-button-secondary" type="submit">Complete</button>
+                                    <button class="uk-button uk-button-small uk-button-secondary uk-margin-small-right" type="submit">Complete</button>
                                 </form>
                                 <a class="uk-button uk-button-small uk-button-default" href="{{ route('tasks.edit', $task['id']) }}">Edit</a>
                             </div>

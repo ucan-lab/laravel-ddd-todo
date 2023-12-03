@@ -10,7 +10,10 @@ use Todo\Domain\Model\ActivityReport\ActivityReportRepository;
 use Todo\Domain\Model\Task\TaskRepository;
 use Todo\Lang\UlidFactory;
 
-final readonly class TaskDoneUseCase
+/**
+ * タスクを完了にする
+ */
+final readonly class DoneTaskUseCase
 {
     public function __construct(
         private TaskRepository $taskRepository,
@@ -18,7 +21,7 @@ final readonly class TaskDoneUseCase
     ) {
     }
 
-    public function done(TaskDoneUseCaseInput $input): TaskDoneUseCaseOutput
+    public function done(DoneTaskUseCaseInput $input): DoneTaskUseCaseOutput
     {
         $task = $this->taskRepository->restoreById($input->taskId);
         $doneTask = $task->done();
@@ -32,6 +35,6 @@ final readonly class TaskDoneUseCase
 
         $this->activityReportRepository->create($activityReport);
 
-        return new TaskDoneUseCaseOutput();
+        return new DoneTaskUseCaseOutput();
     }
 }

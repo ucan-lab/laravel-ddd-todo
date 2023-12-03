@@ -9,14 +9,6 @@ use Illuminate\Foundation\Http\FormRequest;
 final class TaskUpdateRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return true;
-    }
-
-    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, mixed>
@@ -25,7 +17,6 @@ final class TaskUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'dueDate' => ['required', 'date'],
         ];
     }
 
@@ -36,7 +27,6 @@ final class TaskUpdateRequest extends FormRequest
     {
         return [
             'name' => 'タスク名',
-            'dueDate' => '期日',
         ];
     }
 }

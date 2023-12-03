@@ -6,11 +6,10 @@ namespace App\Http\Controllers\Task;
 
 use App\Http\Controllers\Controller;
 use App\Http\Request\Task\TaskUpdateRequest;
-use DateTimeImmutable;
 use Exception;
 use Illuminate\Http\RedirectResponse;
-use Todo\Application\Task\TaskCreateUseCase;
-use Todo\Application\Task\TaskCreateUseCaseInput;
+use Todo\Application\Task\UpdateTaskUseCase;
+use Todo\Application\Task\UpdateTaskUseCaseInput;
 
 final class TaskUpdateController extends Controller
 {
@@ -19,18 +18,18 @@ final class TaskUpdateController extends Controller
      */
     public function __invoke(
         TaskUpdateRequest $request,
-        TaskCreateUseCase $useCase,
+        UpdateTaskUseCase $useCase,
+        string $task,
     ): RedirectResponse {
-        $input = new TaskCreateUseCaseInput(
+        $input = new UpdateTaskUseCaseInput(
             $this->auth->id(),
+            $task,
             (string) $request->input('name'),
-            new DateTimeImmutable($request->input('dueDate'))
         );
 
-        $useCase->create($input);
+        $useCase->updateTask($input);
 
-        $this->session->flash(self::SESSION_SUCCESS, $this->translator->get('messages.tasks.store.success'));
-
-        return $this->redirector->route('tasks.index');
+        return $this->redirector->route('tasks.index')
+            ->with(self::SESSION_SUCCESS, $this->translator->get('messages.tasks.update.success'));
     }
 }

@@ -9,7 +9,7 @@ use Todo\Domain\Model\Task\TaskRepository;
 use Todo\Domain\Model\User\UserRepository;
 
 /**
- * タスク詳細取得
+ * タスクの詳細を取得する
  */
 final readonly class GetTaskDetailUseCase
 {

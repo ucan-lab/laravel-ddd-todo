@@ -36,12 +36,12 @@ final readonly class Task
         }
 
         return new self(
-            $this->id,
-            $this->userId,
-            $this->name,
-            $this->status,
-            $this->dueDate->modify('+1 day'),
-            $this->postponeCount->increment(),
+            id: $this->id,
+            userId: $this->userId,
+            name: $this->name,
+            status: $this->status,
+            dueDate: $this->dueDate->modify('+1 day'),
+            postponeCount: $this->postponeCount->increment(),
         );
     }
 
@@ -58,12 +58,12 @@ final readonly class Task
         }
 
         return new self(
-            $this->id,
-            $this->userId,
-            $this->name,
-            Status::Done,
-            $this->dueDate,
-            $this->postponeCount,
+            id: $this->id,
+            userId: $this->userId,
+            name: $this->name,
+            status: Status::Done,
+            dueDate: $this->dueDate,
+            postponeCount: $this->postponeCount,
         );
     }
 
@@ -95,5 +95,17 @@ final readonly class Task
     public function postponeCount(): int
     {
         return $this->postponeCount->value();
+    }
+
+    public function changeTaskName(string $taskName): self
+    {
+        return new self(
+            id: $this->id,
+            userId: $this->userId,
+            name: $taskName,
+            status: $this->status,
+            dueDate: $this->dueDate,
+            postponeCount: $this->postponeCount,
+        );
     }
 }

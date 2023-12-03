@@ -13,7 +13,10 @@ use Todo\Domain\Model\Task\TaskRepository;
 use Todo\Domain\Model\User\UserId;
 use Todo\Lang\UlidFactory;
 
-final readonly class TaskCreateUseCase
+/**
+ * タスクを作成する
+ */
+final readonly class CreateTaskUseCase
 {
     public function __construct(
         private TaskFactory $taskFactory,
@@ -22,7 +25,7 @@ final readonly class TaskCreateUseCase
     ) {
     }
 
-    public function create(TaskCreateUseCaseInput $input): TaskCreateUseCaseOutput
+    public function createTask(CreateTaskUseCaseInput $input): CreateTaskUseCaseOutput
     {
         $task = $this->taskFactory->create(
             TaskId::create(UlidFactory::generate()),
@@ -40,6 +43,6 @@ final readonly class TaskCreateUseCase
 
         $this->activityReportRepository->create($activityReport);
 
-        return new TaskCreateUseCaseOutput();
+        return new CreateTaskUseCaseOutput();
     }
 }

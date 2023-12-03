@@ -9,11 +9,11 @@ use Todo\Domain\Model\Task\Task;
 /**
  * 活動レポート
  */
-final class ActivityReport
+final readonly class ActivityReport
 {
     private function __construct(
-        private readonly ActivityReportId $activityReportId,
-        private readonly string $details,
+        private ActivityReportId $activityReportId,
+        private string $details,
     ) {
     }
 
@@ -22,7 +22,15 @@ final class ActivityReport
      */
     public static function createTask(ActivityReportId $activityReportId, Task $task): self
     {
-        return new self($activityReportId, $task->name().'のタスクを作成しました。');
+        return new self($activityReportId, $task->userId() . ' のユーザーが ' . $task->id() . ' のタスクを作成しました。');
+    }
+
+    /**
+     * @return static
+     */
+    public static function updateTask(ActivityReportId $activityReportId, Task $task): self
+    {
+        return new self($activityReportId, $task->userId() . ' のユーザーが ' . $task->id() . ' のタスクを更新しました。');
     }
 
     /**
@@ -30,7 +38,7 @@ final class ActivityReport
      */
     public static function postponeTask(ActivityReportId $activityReportId, Task $task): self
     {
-        return new self($activityReportId, $task->name().'のタスクを延期しました。');
+        return new self($activityReportId, $task->userId() . ' のユーザーが ' . $task->id() . ' のタスクを延期しました。');
     }
 
     /**
@@ -38,7 +46,7 @@ final class ActivityReport
      */
     public static function doneTask(ActivityReportId $activityReportId, Task $task): self
     {
-        return new self($activityReportId, $task->name().'のタスクが完了しました。');
+        return new self($activityReportId, $task->userId() . ' のユーザーが ' . $task->id() . ' のタスクが完了しました。');
     }
 
     public function id(): string

@@ -8,17 +8,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Request\Task\TaskPostponeRequest;
 use Exception;
 use Illuminate\Http\RedirectResponse;
-use Todo\Application\Task\TaskPostponeUseCase;
-use Todo\Application\Task\TaskPostponeUseCaseInput;
+use Todo\Application\Task\PostponeTaskUseCase;
+use Todo\Application\Task\PostponeTaskUseCaseInput;
 
 final class TaskPostponeController extends Controller
 {
     public function __invoke(
         TaskPostponeRequest $request,
-        TaskPostponeUseCase $useCase,
-        string $taskId,
+        PostponeTaskUseCase $useCase,
+        string              $taskId,
     ): RedirectResponse {
-        $input = new TaskPostponeUseCaseInput($taskId);
+        $input = new PostponeTaskUseCaseInput($taskId);
 
         try {
             $useCase->postpone($input);

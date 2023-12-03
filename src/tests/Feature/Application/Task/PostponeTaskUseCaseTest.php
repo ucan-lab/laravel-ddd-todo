@@ -8,12 +8,12 @@ use App\Models\Task;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Todo\Application\Task\TaskPostponeUseCase;
-use Todo\Application\Task\TaskPostponeUseCaseInput;
-use Todo\Application\Task\TaskPostponeUseCaseOutput;
+use Todo\Application\Task\PostponeTaskUseCase;
+use Todo\Application\Task\PostponeTaskUseCaseInput;
+use Todo\Application\Task\PostponeTaskUseCaseOutput;
 use Todo\Domain\Model\Task\Status;
 
-final class TaskPostponeUseCaseTest extends TestCase
+final class PostponeTaskUseCaseTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -25,10 +25,10 @@ final class TaskPostponeUseCaseTest extends TestCase
         /** @var Task $task */
         $task = Task::factory()->for($user)->created()->create(['due_date' => '2022-01-01']);
 
-        $input = new TaskPostponeUseCaseInput($task->id);
-        $output = $this->app->make(TaskPostponeUseCase::class)->postpone($input);
+        $input = new PostponeTaskUseCaseInput($task->id);
+        $output = $this->app->make(PostponeTaskUseCase::class)->postpone($input);
 
-        $this->assertTrue($output instanceof TaskPostponeUseCaseOutput);
+        $this->assertTrue($output instanceof PostponeTaskUseCaseOutput);
 
         $task->refresh();
 

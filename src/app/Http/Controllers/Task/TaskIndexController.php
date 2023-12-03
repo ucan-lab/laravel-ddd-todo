@@ -7,17 +7,17 @@ namespace App\Http\Controllers\Task;
 use App\Http\Controllers\Controller;
 use App\Http\Request\Task\TaskIndexRequest;
 use Illuminate\Contracts\View\View;
-use Todo\Application\Task\TaskListUseCase;
-use Todo\Application\Task\TaskListUseCaseInput;
+use Todo\Application\Task\GetTaskListUseCase;
+use Todo\Application\Task\GetTaskListUseCaseInput;
 use Todo\Domain\Model\Task\Task;
 
 final class TaskIndexController extends Controller
 {
     public function __invoke(
         TaskIndexRequest $request,
-        TaskListUseCase $useCase,
+        GetTaskListUseCase $useCase,
     ): View {
-        $input = new TaskListUseCaseInput($this->auth->id(), $request->input('status'));
+        $input = new GetTaskListUseCaseInput($this->auth->id(), $request->input('status'));
         $output = $useCase->list($input);
 
         $taskList = [];

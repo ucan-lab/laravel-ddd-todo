@@ -8,28 +8,26 @@ use App\Http\Controllers\Controller;
 use App\Http\Request\Task\TaskDoneRequest;
 use Exception;
 use Illuminate\Http\RedirectResponse;
-use Todo\Application\Task\TaskDoneUseCase;
-use Todo\Application\Task\TaskDoneUseCaseInput;
+use Todo\Application\Task\DoneTaskUseCase;
+use Todo\Application\Task\DoneTaskUseCaseInput;
 
 final class TaskDoneController extends Controller
 {
     public function __invoke(
         TaskDoneRequest $request,
-        TaskDoneUseCase $useCase,
+        DoneTaskUseCase $useCase,
         string $taskId,
     ): RedirectResponse {
-        $input = new TaskDoneUseCaseInput($taskId);
+        $input = new DoneTaskUseCaseInput($taskId);
 
         try {
             $useCase->done($input);
         } catch (Exception $exception) {
-            $this->session->flash(self::SESSION_FAILURE, $exception->getMessage());
-
-            return $this->redirector->back();
+            return $this->redirector->back()
+                ->with(self::SESSION_FAILURE, $exception->getMessage());
         }
 
-        $this->session->flash(self::SESSION_SUCCESS, $this->translator->get('messages.tasks.done.success'));
-
-        return $this->redirector->route('tasks.index');
+        return $this->redirector->route('tasks.index')
+            ->with(self::SESSION_SUCCESS, $this->translator->get('messages.tasks.done.success'));
     }
 }

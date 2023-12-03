@@ -10,7 +10,10 @@ use Todo\Domain\Model\ActivityReport\ActivityReportRepository;
 use Todo\Domain\Model\Task\TaskRepository;
 use Todo\Lang\UlidFactory;
 
-final readonly class TaskPostponeUseCase
+/**
+ * タスクを延期する
+ */
+final readonly class PostponeTaskUseCase
 {
     public function __construct(
         private TaskRepository $taskRepository,
@@ -18,7 +21,7 @@ final readonly class TaskPostponeUseCase
     ) {
     }
 
-    public function postpone(TaskPostponeUseCaseInput $input): TaskPostponeUseCaseOutput
+    public function postpone(PostponeTaskUseCaseInput $input): PostponeTaskUseCaseOutput
     {
         $task = $this->taskRepository->restoreById($input->taskId);
         $postponeTask = $task->postpone();
@@ -32,6 +35,6 @@ final readonly class TaskPostponeUseCase
 
         $this->activityReportRepository->create($activityReport);
 
-        return new TaskPostponeUseCaseOutput();
+        return new PostponeTaskUseCaseOutput();
     }
 }
