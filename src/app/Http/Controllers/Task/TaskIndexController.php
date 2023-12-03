@@ -7,8 +7,8 @@ namespace App\Http\Controllers\Task;
 use App\Http\Controllers\Controller;
 use App\Http\Request\Task\TaskIndexRequest;
 use Illuminate\Contracts\View\View;
-use Todo\Application\Task\GetTaskListUseCase;
-use Todo\Application\Task\GetTaskListUseCaseInput;
+use Todo\Application\Service\Task\GetTaskListUseCase;
+use Todo\Application\Service\Task\GetTaskListUseCaseInput;
 use Todo\Domain\Model\Task\Task;
 
 final class TaskIndexController extends Controller

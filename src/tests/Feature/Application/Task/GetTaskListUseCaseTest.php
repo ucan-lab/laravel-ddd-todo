@@ -8,9 +8,9 @@ use App\Models\Task;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Todo\Application\Task\GetTaskListUseCase;
-use Todo\Application\Task\GetTaskListUseCaseInput;
-use Todo\Application\Task\GetTaskListUseCaseOutput;
+use Todo\Application\Service\Task\GetTaskListUseCase;
+use Todo\Application\Service\Task\GetTaskListUseCaseInput;
+use Todo\Application\Service\Task\GetTaskListUseCaseOutput;
 use Todo\Domain\Model\Task\Status;
 
 final class GetTaskListUseCaseTest extends TestCase

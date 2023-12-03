@@ -8,14 +8,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Request\Register\SignUpRequest;
 use Illuminate\Http\RedirectResponse;
 use Throwable;
-use Todo\Application\User\UserRegisterUseCase;
-use Todo\Application\User\UserRegisterUseCaseInput;
+use Todo\Application\Service\User\RegisterUserUseCase;
+use Todo\Application\Service\User\RegisterUserUseCaseInput;
 
 final class SignUpController extends Controller
 {
-    public function __invoke(SignUpRequest $request, UserRegisterUseCase $useCase): RedirectResponse
+    public function __invoke(SignUpRequest $request, RegisterUserUseCase $useCase): RedirectResponse
     {
-        $input = new UserRegisterUseCaseInput(
+        $input = new RegisterUserUseCaseInput(
             (string) $request->input('name'),
             (string) $request->input('email'),
             (string) $request->input('password'),

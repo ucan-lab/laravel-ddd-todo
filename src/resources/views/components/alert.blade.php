@@ -1,4 +1,13 @@
 @section('alert')
+    @if (session('status'))
+        <div class="uk-alert-success uk-margin-remove-bottom" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+            <ul>
+                <li>{{ session('status') }}</li>
+            </ul>
+        </div>
+    @endif
+
     @if (session('success'))
         <div class="uk-alert-success uk-margin-remove-bottom" uk-alert>
             <a class="uk-alert-close" uk-close></a>

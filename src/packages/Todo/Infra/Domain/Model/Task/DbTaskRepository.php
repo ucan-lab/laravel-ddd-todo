@@ -63,8 +63,6 @@ final readonly class DbTaskRepository implements TaskRepository
 
     public function store(Task $task): void
     {
-        dump($task);
-
         EloquentTask::updateOrCreate(
             [
                 'id' => $task->id(),

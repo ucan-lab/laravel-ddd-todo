@@ -8,9 +8,9 @@ use App\Models\Task;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Todo\Application\Task\DoneTaskUseCase;
-use Todo\Application\Task\DoneTaskUseCaseInput;
-use Todo\Application\Task\DoneTaskUseCaseOutput;
+use Todo\Application\Service\Task\DoneTaskUseCase;
+use Todo\Application\Service\Task\DoneTaskUseCaseInput;
+use Todo\Application\Service\Task\DoneTaskUseCaseOutput;
 
 final class DoneTaskUseCaseTest extends TestCase
 {

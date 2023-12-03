@@ -23,6 +23,7 @@ final class LoginController extends Controller
             return $this->redirector->route('dashboard');
         }
 
-        return $this->redirector->back();
+        return $this->redirector->back()
+            ->withErrors(['danger' => 'ログインに失敗しました。']);
     }
 }

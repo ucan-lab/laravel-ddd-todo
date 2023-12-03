@@ -12,24 +12,24 @@ use Todo\Domain\Model\Task\Task;
 use Todo\Domain\Model\Task\TaskFactory;
 use Todo\Domain\Model\Task\TaskId;
 use Todo\Domain\Model\User\UserId;
+use Todo\Lang\UlidGenerator;
 
 final class ConcreteTaskFactory implements TaskFactory
 {
     public function create(
-        TaskId $id,
-        UserId $userId,
+        string $userId,
         string $name,
         DateTimeImmutable $dueDate,
     ): Task {
         $name ?: throw new InvalidArgumentException('タスク名が空です。');
 
         return new Task(
-            $id,
-            $userId,
-            $name,
-            Status::Undone,
-            $dueDate,
-            PostponeCount::create(),
+            id: new TaskId(UlidGenerator::generate()),
+            userId: new UserId($userId),
+            name: $name,
+            status: Status::Undone,
+            dueDate: $dueDate,
+            postponeCount: PostponeCount::create(),
         );
     }
 
@@ -42,12 +42,12 @@ final class ConcreteTaskFactory implements TaskFactory
         int $postponeCount,
     ): Task {
         return new Task(
-            TaskId::fromString($id),
-            UserId::fromString($userId),
-            $name,
-            Status::from($status),
-            $dueDate,
-            PostponeCount::fromRepository($postponeCount),
+            id: new TaskId($id),
+            userId: new UserId($userId),
+            name: $name,
+            status: Status::from($status),
+            dueDate: $dueDate,
+            postponeCount: PostponeCount::fromRepository($postponeCount),
         );
     }
 }

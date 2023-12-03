@@ -16,8 +16,8 @@ final class SignUpControllerTest extends TestCase
         $data = [
             'name' => 'test',
             'email' => 'test@example.com',
-            'password' => 'password',
-            'password_confirmation' => 'password',
+            'password' => 'P@ssw0rd',
+            'password_confirmation' => 'P@ssw0rd',
         ];
 
         $this->post('/sign-up', $data)

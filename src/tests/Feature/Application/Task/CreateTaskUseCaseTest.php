@@ -7,10 +7,10 @@ namespace Tests\Feature\Application\Task;
 use DateTimeImmutable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Todo\Application\Task\CreateTaskUseCase;
-use Todo\Application\Task\CreateTaskUseCaseInput;
-use Todo\Application\Task\CreateTaskUseCaseOutput;
-use Todo\Lang\UlidFactory;
+use Todo\Application\Service\Task\CreateTaskUseCase;
+use Todo\Application\Service\Task\CreateTaskUseCaseInput;
+use Todo\Application\Service\Task\CreateTaskUseCaseOutput;
+use Todo\Lang\UlidGenerator;
 
 final class CreateTaskUseCaseTest extends TestCase
 {
@@ -18,9 +18,9 @@ final class CreateTaskUseCaseTest extends TestCase
 
     public function testタスクを作成できること(): void
     {
-        $input = new CreateTaskUseCaseInput(UlidFactory::generate()->id(), 'テスト', new DateTimeImmutable());
+        $input = new CreateTaskUseCaseInput(UlidGenerator::generate(), 'テスト', new DateTimeImmutable());
 
         $output = $this->app->make(CreateTaskUseCase::class)->createTask($input);
-        $this->assertTrue($output instanceof CreateTaskUseCaseOutput);
+        $this->assertInstanceOf(CreateTaskUseCaseOutput::class, $output);
     }
 }

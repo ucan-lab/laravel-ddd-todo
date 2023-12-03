@@ -12,14 +12,14 @@ use Todo\Domain\Model\Task\Status;
 use Todo\Domain\Model\Task\Task;
 use Todo\Domain\Model\Task\TaskId;
 use Todo\Domain\Model\User\UserId;
-use Todo\Lang\UlidFactory;
+use Todo\Lang\UlidGenerator;
 
 final class TaskTest extends TestCase
 {
     public function testタスクを新しく作成できること(): void
     {
-        $taskId = TaskId::create(UlidFactory::generate());
-        $userId = UserId::create(UlidFactory::generate());
+        $taskId = new TaskId(UlidGenerator::generate());
+        $userId = new UserId(UlidGenerator::generate());
         $name = 'テスト';
         $dueDate = new DateTimeImmutable('2022-01-01');
 
@@ -35,8 +35,8 @@ final class TaskTest extends TestCase
 
     public function testタスクを完了にできること(): void
     {
-        $taskId = TaskId::create(UlidFactory::generate());
-        $userId = UserId::create(UlidFactory::generate());
+        $taskId = new TaskId(UlidGenerator::generate());
+        $userId = new UserId(UlidGenerator::generate());
         $name = 'テスト';
         $dueDate = new DateTimeImmutable('2022-01-01');
 
@@ -53,8 +53,8 @@ final class TaskTest extends TestCase
 
     public function testタスクを3回まで延期できること(): void
     {
-        $taskId = TaskId::create(UlidFactory::generate());
-        $userId = UserId::create(UlidFactory::generate());
+        $taskId = new TaskId(UlidGenerator::generate());
+        $userId = new UserId(UlidGenerator::generate());
         $name = 'テスト';
         $dueDate = new DateTimeImmutable('2022-01-01');
 
@@ -73,8 +73,8 @@ final class TaskTest extends TestCase
 
     public function testタスクを4回延期すると失敗すること(): void
     {
-        $taskId = TaskId::create(UlidFactory::generate());
-        $userId = UserId::create(UlidFactory::generate());
+        $taskId = new TaskId(UlidGenerator::generate());
+        $userId = new UserId(UlidGenerator::generate());
         $name = 'テスト';
         $dueDate = new DateTimeImmutable('2022-01-01');
 

@@ -9,8 +9,8 @@ use App\Http\Request\Task\TaskStoreRequest;
 use DateTimeImmutable;
 use Exception;
 use Illuminate\Http\RedirectResponse;
-use Todo\Application\Task\CreateTaskUseCase;
-use Todo\Application\Task\CreateTaskUseCaseInput;
+use Todo\Application\Service\Task\CreateTaskUseCase;
+use Todo\Application\Service\Task\CreateTaskUseCaseInput;
 
 final class TaskStoreController extends Controller
 {

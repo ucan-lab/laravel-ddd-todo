@@ -6,30 +6,20 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Request\Auth\ForgotPasswordRequest;
-use Exception;
 use Illuminate\Http\RedirectResponse;
-use Todo\Application\Password\SendPasswordResetUseCase;
-use Todo\Application\Password\SendPasswordResetUseCaseInput;
-use Todo\Domain\Model\User\NotFoundUserException;
+use Illuminate\Support\Facades\Password;
 
+/**
+ * @see https://readouble.com/laravel/10.x/ja/passwords.html
+ */
 final class ForgotPasswordController extends Controller
 {
-    /**
-     * @throws Exception
-     */
-    public function __invoke(ForgotPasswordRequest $request, SendPasswordResetUseCase $useCase): RedirectResponse
+    public function __invoke(ForgotPasswordRequest $request): RedirectResponse
     {
-        $email = $request->input('email');
-        $input = new SendPasswordResetUseCaseInput($email);
+        $status = Password::sendResetLink($request->only('email'));
 
-        try {
-            $useCase->send($input);
-        } catch (NotFoundUserException) {
-            return $this->redirector->back()
-                ->with(self::SESSION_FAILURE, '入力されたメールアドレスは存在しません。');
-        }
-
-        return $this->redirector->back()
-            ->with(self::SESSION_SUCCESS, 'パスワードリセットメールを送信しました。');
+        return $status === Password::RESET_LINK_SENT
+            ? back()->with(['status' => __($status)])
+            : back()->withErrors(['email' => __($status)]);
     }
 }

@@ -8,9 +8,9 @@ use App\Models\Task;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Todo\Application\Task\PostponeTaskUseCase;
-use Todo\Application\Task\PostponeTaskUseCaseInput;
-use Todo\Application\Task\PostponeTaskUseCaseOutput;
+use Todo\Application\Service\Task\PostponeTaskUseCase;
+use Todo\Application\Service\Task\PostponeTaskUseCaseInput;
+use Todo\Application\Service\Task\PostponeTaskUseCaseOutput;
 use Todo\Domain\Model\Task\Status;
 
 final class PostponeTaskUseCaseTest extends TestCase
@@ -28,7 +28,7 @@ final class PostponeTaskUseCaseTest extends TestCase
         $input = new PostponeTaskUseCaseInput($task->id);
         $output = $this->app->make(PostponeTaskUseCase::class)->postpone($input);
 
-        $this->assertTrue($output instanceof PostponeTaskUseCaseOutput);
+        $this->assertInstanceOf(PostponeTaskUseCaseOutput::class, $output);
 
         $task->refresh();
 

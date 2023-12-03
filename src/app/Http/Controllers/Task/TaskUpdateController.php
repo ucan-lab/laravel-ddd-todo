@@ -8,8 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Request\Task\TaskUpdateRequest;
 use Exception;
 use Illuminate\Http\RedirectResponse;
-use Todo\Application\Task\UpdateTaskUseCase;
-use Todo\Application\Task\UpdateTaskUseCaseInput;
+use Todo\Application\Service\Task\UpdateTaskUseCase;
+use Todo\Application\Service\Task\UpdateTaskUseCaseInput;
 
 final class TaskUpdateController extends Controller
 {

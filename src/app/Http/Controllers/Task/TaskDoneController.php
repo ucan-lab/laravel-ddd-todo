@@ -8,8 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Request\Task\TaskDoneRequest;
 use Exception;
 use Illuminate\Http\RedirectResponse;
-use Todo\Application\Task\DoneTaskUseCase;
-use Todo\Application\Task\DoneTaskUseCaseInput;
+use Todo\Application\Service\Task\DoneTaskUseCase;
+use Todo\Application\Service\Task\DoneTaskUseCaseInput;
 
 final class TaskDoneController extends Controller
 {

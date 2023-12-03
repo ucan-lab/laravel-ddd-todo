@@ -14,6 +14,10 @@ use Todo\Domain\Model\User\UserRepository;
 
 final readonly class DbUserRepository implements UserRepository
 {
+    public function __construct(private UserFactory $userFactory)
+    {
+    }
+
     public function restoreById(string $id): User
     {
         $eloquentUser = EloquentUser::find($id);
@@ -22,7 +26,7 @@ final readonly class DbUserRepository implements UserRepository
             throw new NotFoundUserException('存在しないユーザーです。');
         }
 
-        return UserFactory::fromRepository(
+        return $this->userFactory->fromRepository(
             $eloquentUser->id,
             $eloquentUser->name,
             $eloquentUser->email,
@@ -40,7 +44,7 @@ final readonly class DbUserRepository implements UserRepository
             throw new NotFoundUserException('存在しないユーザーです。');
         }
 
-        return UserFactory::fromRepository(
+        return $this->userFactory->fromRepository(
             $eloquentUser->id,
             $eloquentUser->name,
             $eloquentUser->email,

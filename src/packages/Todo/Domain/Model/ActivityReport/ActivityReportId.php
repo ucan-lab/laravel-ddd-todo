@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace Todo\Domain\Model\ActivityReport;
 
-use Todo\Lang\Ulid;
-
-final class ActivityReportId
+final readonly class ActivityReportId
 {
-    public function __construct(private readonly Ulid $id)
+    public function __construct(private string $id)
     {
     }
 
     public function id(): string
     {
-        return $this->id->id();
+        return $this->id;
     }
 }

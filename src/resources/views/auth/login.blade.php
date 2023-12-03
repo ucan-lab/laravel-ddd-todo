@@ -17,13 +17,13 @@
                                 <div class="uk-margin">
                                     <div class="uk-inline uk-width-1-1">
                                         <span class="uk-form-icon" uk-icon="icon: mail"></span>
-                                        <input name="email" class="uk-input uk-form-large" type="email" value="demo@example.com" required>
+                                        <input name="email" class="uk-input uk-form-large" type="email" required>
                                     </div>
                                 </div>
                                 <div class="uk-margin">
                                     <div class="uk-inline uk-width-1-1">
                                         <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                                        <input name="password" class="uk-input uk-form-large" type="password" value="password" required>
+                                        <input name="password" class="uk-input uk-form-large" type="password" required>
                                     </div>
                                 </div>
                                 <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
@@ -36,10 +36,19 @@
                                     Not registered? <a href="{{ route('sign-up') }}">Create an account</a>
                                 </div>
                                 <div class="uk-text-small uk-text-center">
-                                    Forgot password? <a href="{{ route('auth.forgot-password.form') }}">Send password resets</a>
+                                    Forgot password? <a href="{{ route('password.request') }}">Send password resets</a>
                                 </div>
                             </form>
                         </div>
+                        @if (config('app.debug'))
+                            <div class="uk-margin uk-width-xlarge uk-margin-auto uk-card uk-card-secondary uk-card-body uk-box-shadow-large">
+                                <p>※デバッグ中のみ表示</p>
+                                <ul>
+                                    <li>メールアドレス: <code style="user-select: all">demo@example.com</code></li>
+                                    <li>パスワード: <code style="user-select: all">P@ssw0rd</code></li>
+                                </ul>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
