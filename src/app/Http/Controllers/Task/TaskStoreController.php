@@ -17,8 +17,10 @@ final class TaskStoreController extends Controller
     /**
      * @throws Exception
      */
-    public function __invoke(TaskStoreRequest $request, TaskCreateUseCase $useCase): RedirectResponse
-    {
+    public function __invoke(
+        TaskStoreRequest $request,
+        TaskCreateUseCase $useCase,
+    ): RedirectResponse {
         $input = new TaskCreateUseCaseInput(
             $this->auth->id(),
             (string) $request->input('name'),

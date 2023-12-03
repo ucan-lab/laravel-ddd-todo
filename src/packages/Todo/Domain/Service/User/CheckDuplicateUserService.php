@@ -7,10 +7,10 @@ namespace Todo\Domain\Service\User;
 use Todo\Domain\Model\User\User;
 use Todo\Domain\Model\User\UserRepository;
 
-final class CheckDuplicateUserService
+final readonly class CheckDuplicateUserService
 {
     public function __construct(
-        private readonly UserRepository $userRepository,
+        private UserRepository $userRepository,
     ) {
     }
 

@@ -13,8 +13,11 @@ use Todo\Application\Task\TaskPostponeUseCaseInput;
 
 final class TaskPostponeController extends Controller
 {
-    public function __invoke(TaskPostponeRequest $request, TaskPostponeUseCase $useCase, string $taskId): RedirectResponse
-    {
+    public function __invoke(
+        TaskPostponeRequest $request,
+        TaskPostponeUseCase $useCase,
+        string $taskId,
+    ): RedirectResponse {
         $input = new TaskPostponeUseCaseInput($taskId);
 
         try {

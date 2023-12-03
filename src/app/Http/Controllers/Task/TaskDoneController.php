@@ -16,7 +16,7 @@ final class TaskDoneController extends Controller
     public function __invoke(
         TaskDoneRequest $request,
         TaskDoneUseCase $useCase,
-        string $taskId
+        string $taskId,
     ): RedirectResponse {
         $input = new TaskDoneUseCaseInput($taskId);
 

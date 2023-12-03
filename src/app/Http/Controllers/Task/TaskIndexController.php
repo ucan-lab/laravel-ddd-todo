@@ -13,8 +13,10 @@ use Todo\Domain\Model\Task\Task;
 
 final class TaskIndexController extends Controller
 {
-    public function __invoke(TaskIndexRequest $request, TaskListUseCase $useCase): View
-    {
+    public function __invoke(
+        TaskIndexRequest $request,
+        TaskListUseCase $useCase,
+    ): View {
         $input = new TaskListUseCaseInput($this->auth->id(), $request->input('status'));
         $output = $useCase->list($input);
 

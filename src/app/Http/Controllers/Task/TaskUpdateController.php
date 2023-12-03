@@ -17,8 +17,10 @@ final class TaskUpdateController extends Controller
     /**
      * @throws Exception
      */
-    public function __invoke(TaskUpdateRequest $request, TaskCreateUseCase $useCase): RedirectResponse
-    {
+    public function __invoke(
+        TaskUpdateRequest $request,
+        TaskCreateUseCase $useCase
+    ): RedirectResponse {
         $input = new TaskCreateUseCaseInput(
             $this->auth->id(),
             (string) $request->input('name'),
