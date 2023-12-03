@@ -13,10 +13,6 @@ use Todo\Domain\Model\User\UserRepository;
 
 final readonly class DbUserRepository implements UserRepository
 {
-    public function __construct(private UserFactory $userFactory)
-    {
-    }
-
     public function restoreByEmail(Email $email): ?User
     {
         $eloquentUser = EloquentUser::query()
@@ -27,7 +23,7 @@ final readonly class DbUserRepository implements UserRepository
             return null;
         }
 
-        return $this->userFactory->fromRepository(
+        return UserFactory::fromRepository(
             $eloquentUser->id,
             $eloquentUser->name,
             $eloquentUser->email,

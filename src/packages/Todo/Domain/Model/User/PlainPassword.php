@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Todo\Domain\Model\User;
 
-final readonly class RawPassword implements Password
+final readonly class PlainPassword implements Password
 {
     public function __construct(private string $value)
     {

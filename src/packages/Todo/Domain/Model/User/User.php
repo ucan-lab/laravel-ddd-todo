@@ -41,7 +41,7 @@ final readonly class User
 
     public function hasRawPassword(): bool
     {
-        return $this->password instanceof RawPassword;
+        return $this->password instanceof PlainPassword;
     }
 
     public function passwordValue(): string

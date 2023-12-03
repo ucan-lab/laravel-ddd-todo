@@ -15,9 +15,9 @@ use Psr\Log\LoggerInterface;
 
 abstract class Controller
 {
-    protected const SESSION_SUCCESS = 'success';
+    protected const string SESSION_SUCCESS = 'success';
 
-    protected const SESSION_FAILURE = 'failure';
+    protected const string SESSION_FAILURE = 'failure';
 
     protected readonly StatefulGuard $auth;
 

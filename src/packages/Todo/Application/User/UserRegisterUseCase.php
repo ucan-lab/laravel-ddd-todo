@@ -14,7 +14,6 @@ use Todo\Lang\UnitOfWork;
 final readonly class UserRegisterUseCase
 {
     public function __construct(
-        private UserFactory $userFactory,
         private UnitOfWork $unitOfWork,
         private CheckDuplicateUserService $checkDuplicateUserService,
         private UserRepository $userRepository,
@@ -26,7 +25,7 @@ final readonly class UserRegisterUseCase
      */
     public function register(UserRegisterUseCaseInput $input): UserRegisterUseCaseOutput
     {
-        $user = $this->userFactory->create(
+        $user = UserFactory::create(
             $input->name,
             $input->email,
             $input->password
