@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Presentation\Controller;
+namespace Feature\App\Http\Controllers\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-final class LoginControllerTest extends TestCase
+final class SignInControllerTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -21,7 +21,7 @@ final class LoginControllerTest extends TestCase
             'password' => 'P@ssw0rd',
         ];
 
-        $this->post('/login', $data)
+        $this->post('/sign-in', $data)
             ->assertRedirect('/dashboard');
     }
 
@@ -29,16 +29,16 @@ final class LoginControllerTest extends TestCase
     {
         $data = [
             'email' => 'test@example.com',
-            'password' => 'password',
+            'password' => 'P@ssw0rd',
         ];
 
-        $this->post('/login', $data, ['HTTP_REFERER' => '/login'])
-            ->assertRedirect('/login');
+        $this->post('/sign-in', $data, ['HTTP_REFERER' => '/sign-in'])
+            ->assertRedirect('/sign-in');
     }
 
     public function test不正な値の時にバリデーションエラーになること(): void
     {
-        $this->post('/login', [], ['HTTP_REFERER' => '/login'])
-            ->assertRedirect('/login');
+        $this->post('/sign-in', [], ['HTTP_REFERER' => '/sign-in'])
+            ->assertRedirect('/sign-in');
     }
 }

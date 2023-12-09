@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Request\Auth\LogoutRequest;
 use Illuminate\Http\RedirectResponse;
 
-final class LogoutController extends Controller
+final class SignOutController extends Controller
 {
     public function __invoke(LogoutRequest $request): RedirectResponse
     {

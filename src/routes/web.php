@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\SignInController;
+use App\Http\Controllers\Auth\SignOutController;
 use App\Http\Controllers\Auth\ResetPasswordShowController;
 use App\Http\Controllers\Auth\ResetPasswordUpdateController;
 use App\Http\Controllers\Auth\SignUpController;
@@ -29,8 +29,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
     Route::view('/', 'welcome')->name('welcome');
-    Route::view('login', 'auth.login')->name('login.form');
-    Route::post('login', LoginController::class)->name('login');
+    Route::view('sign-in', 'auth.sign-in')->name('sign-in.form');
+    Route::post('sign-in', SignInController::class)->name('sign-in');
     Route::view('sign-up', 'auth.sign-up')->name('sign-up.form');
     Route::post('sign-up', SignUpController::class)->name('sign-up');
     Route::view('forgot-password', 'auth.forgot-password')->name('password.request');
@@ -39,10 +39,8 @@ Route::middleware('guest')->group(function () {
     Route::post('reset-password/{token}', ResetPasswordUpdateController::class)->name('password.update');
 });
 
-http://localhost/reset-password/a8515cc655c168ea496289fdb70d6727befac1f2aab134678370a9d6bd5bd5d6?email=demo%40example.com
-
 Route::middleware('auth')->group(function () {
-    Route::get('logout', LogoutController::class)->name('logout');
+    Route::get('sign-out', SignOutController::class)->name('sign-out');
     Route::redirect('dashboard', 'tasks')->name('dashboard');
     // Route::view('profile', 'profile')->name('profile');
     // Route::put('profile', 'profile')->name('profile.update');

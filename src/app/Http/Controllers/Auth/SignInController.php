@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Request\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 
-final class LoginController extends Controller
+final class SignInController extends Controller
 {
     public function __invoke(LoginRequest $request): RedirectResponse
     {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Application\Task;
+namespace Feature\Todo\Application\Task;
 
 use App\Models\Task;
 use App\Models\User;
