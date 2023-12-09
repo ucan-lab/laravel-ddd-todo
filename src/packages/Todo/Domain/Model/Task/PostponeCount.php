@@ -10,14 +10,7 @@ final readonly class PostponeCount
 {
     private const int MAX_POSTPONE_COUNT = 3;
 
-    private function __construct(private int $value)
-    {
-    }
-
-    /**
-     * @return static
-     */
-    public static function create(int $value = 0): self
+    public function __construct(private int $value)
     {
         if ($value < 0) {
             throw new InvalidArgumentException('延期回数は自然数である必要があります。');
@@ -26,13 +19,6 @@ final readonly class PostponeCount
         if ($value > self::MAX_POSTPONE_COUNT) {
             throw new InvalidArgumentException('最大延期回数を超えています。');
         }
-
-        return new self($value);
-    }
-
-    public static function fromRepository(int $postponeCount): self
-    {
-        return new self($postponeCount);
     }
 
     public function value(): int
@@ -45,6 +31,6 @@ final readonly class PostponeCount
      */
     public function increment(): self
     {
-        return self::create($this->value + 1);
+        return new self($this->value + 1);
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Profile Edit')
+@section('title', __('views.profile.show.title'))
 
 @section('main')
     <form class="uk-form-stacked" action="{{ route('profile') }}" method="POST">
@@ -8,21 +8,21 @@
         @put
 
         <div class="uk-margin">
-            <label class="uk-form-label" for="form-stacked-text">Name</label>
+            <label class="uk-form-label" for="form-stacked-text">{{ __('views.profile.show.name') }}</label>
             <div class="uk-form-controls">
                 <input class="uk-input" id="form-stacked-text" type="text" value="{{ $name }}">
             </div>
         </div>
 
         <div class="uk-margin">
-            <label class="uk-form-label" for="form-stacked-text">Email</label>
+            <label class="uk-form-label" for="form-stacked-text">{{ __('views.profile.show.email') }}</label>
             <div class="uk-form-controls">
                 <input class="uk-input" id="form-stacked-text" type="email" value="{{ $email }}">
             </div>
         </div>
 
         <div class="uk-margin">
-            <button class="uk-button uk-button-primary" type="submit">更新</button>
+            <button class="uk-button uk-button-primary" type="submit">{{ __('views.profile.show.update') }}</button>
         </div>
     </form>
 @endsection

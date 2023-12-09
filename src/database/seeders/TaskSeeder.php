@@ -20,8 +20,8 @@ final class TaskSeeder extends Seeder
 
         $taskNameList = [
             ['name' => '朝食を作る'],
-            ['name' => '散歩する'],
-            ['name' => '北海道に旅行する'],
+            ['name' => '歯を磨く'],
+            ['name' => '一人で北海道に旅行する'],
         ];
 
         Task::factory()
@@ -31,9 +31,9 @@ final class TaskSeeder extends Seeder
             ->create($attributes);
 
         $taskNameList = [
-            ['name' => '山田さんと会う'],
-            ['name' => '動物園に行く'],
-            ['name' => '温泉に行く'],
+            ['name' => '一人でディズニーランドに行く'],
+            ['name' => '一人で焼肉に行く'],
+            ['name' => '一人で温泉旅行に行く'],
         ];
 
         Task::factory()
@@ -43,9 +43,9 @@ final class TaskSeeder extends Seeder
             ->create($attributes);
 
         $taskNameList = [
-            ['name' => '映画を見る'],
-            ['name' => '水族館へ行く'],
-            ['name' => 'ゲームをする'],
+            ['name' => '友達と映画を見る'],
+            ['name' => '彼女と水族館へ行く'],
+            ['name' => '奥さんとゲームをする'],
         ];
 
         Task::factory()

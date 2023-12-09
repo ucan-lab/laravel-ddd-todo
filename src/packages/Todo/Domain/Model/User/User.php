@@ -8,12 +8,26 @@ use Todo\Domain\Model\Task\Task;
 
 final readonly class User
 {
-    public function __construct(
+    private function __construct(
         private UserId $id,
         private UserName $name,
         private Email $email,
         private Password $password,
     ) {
+    }
+
+    public static function create(
+        string $id,
+        string $name,
+        string $email,
+        Password $password,
+    ): self {
+        return new self (
+            id: new UserId($id),
+            name: new UserName($name),
+            email: new Email($email),
+            password: clone $password,
+        );
     }
 
     public function id(): string

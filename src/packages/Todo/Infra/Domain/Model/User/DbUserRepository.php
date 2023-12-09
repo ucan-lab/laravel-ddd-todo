@@ -7,17 +7,13 @@ namespace Todo\Infra\Domain\Model\User;
 use App\Models\User as EloquentUser;
 use Illuminate\Support\Facades\Hash;
 use Todo\Domain\Model\User\Email;
+use Todo\Domain\Model\User\HashedPassword;
 use Todo\Domain\Model\User\NotFoundUserException;
 use Todo\Domain\Model\User\User;
-use Todo\Domain\Model\User\UserFactory;
 use Todo\Domain\Model\User\UserRepository;
 
 final readonly class DbUserRepository implements UserRepository
 {
-    public function __construct(private UserFactory $userFactory)
-    {
-    }
-
     public function restoreById(string $id): User
     {
         $eloquentUser = EloquentUser::find($id);
@@ -26,11 +22,11 @@ final readonly class DbUserRepository implements UserRepository
             throw new NotFoundUserException('存在しないユーザーです。');
         }
 
-        return $this->userFactory->fromRepository(
-            $eloquentUser->id,
-            $eloquentUser->name,
-            $eloquentUser->email,
-            $eloquentUser->password,
+        return User::create(
+            id: $eloquentUser->id,
+            name: $eloquentUser->name,
+            email: $eloquentUser->email,
+            password: new HashedPassword($eloquentUser->password),
         );
     }
 
@@ -44,11 +40,11 @@ final readonly class DbUserRepository implements UserRepository
             throw new NotFoundUserException('存在しないユーザーです。');
         }
 
-        return $this->userFactory->fromRepository(
-            $eloquentUser->id,
-            $eloquentUser->name,
-            $eloquentUser->email,
-            $eloquentUser->password,
+        return User::create(
+            id: $eloquentUser->id,
+            name: $eloquentUser->name,
+            email: $eloquentUser->email,
+            password: new HashedPassword($eloquentUser->password),
         );
     }
 

@@ -95,13 +95,13 @@ final class TaskTest extends TestCase
         string $name,
         DateTimeImmutable $dueDate,
     ): Task {
-        return new Task(
-            $taskId,
-            $userId,
-            $name,
-            Status::Undone,
-            $dueDate,
-            PostponeCount::create(),
+        return Task::create(
+            taskId: $taskId->id(),
+            userId: $userId->id(),
+            name: $name,
+            status: Status::Undone->value,
+            dueDate: $dueDate,
+            postponeCount: 0,
         );
     }
 }

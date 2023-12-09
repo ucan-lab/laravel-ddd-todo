@@ -8,17 +8,12 @@ use App\Models\Task as EloquentTask;
 use Illuminate\Contracts\Database\Query\Builder;
 use Todo\Domain\Model\Task\NotFoundTaskException;
 use Todo\Domain\Model\Task\Task;
-use Todo\Domain\Model\Task\TaskFactory;
 use Todo\Domain\Model\Task\TaskList;
 use Todo\Domain\Model\Task\TaskRepository;
 use Todo\Domain\Model\Task\TaskSearchCondition;
 
 final readonly class DbTaskRepository implements TaskRepository
 {
-    public function __construct(private TaskFactory $taskFactory)
-    {
-    }
-
     public function restoreById(string $id): Task
     {
         $eloquentTask = EloquentTask::find($id);
@@ -27,13 +22,13 @@ final readonly class DbTaskRepository implements TaskRepository
             throw new NotFoundTaskException('タスクが見つかりません。');
         }
 
-        return $this->taskFactory->fromRepository(
-            $eloquentTask->id,
-            $eloquentTask->user_id,
-            $eloquentTask->name,
-            $eloquentTask->status,
-            $eloquentTask->due_date->toDateTimeImmutable(),
-            $eloquentTask->post_pone_count,
+        return Task::create(
+            taskId: $eloquentTask->id,
+            userId: $eloquentTask->user_id,
+            name: $eloquentTask->name,
+            status: $eloquentTask->status,
+            dueDate: $eloquentTask->due_date->toDateTimeImmutable(),
+            postponeCount: $eloquentTask->post_pone_count,
         );
     }
 
@@ -48,13 +43,13 @@ final readonly class DbTaskRepository implements TaskRepository
         $taskList = [];
 
         foreach ($eloquentTaskList as $eloquentTask) {
-            $taskList[] = $this->taskFactory->fromRepository(
-                $eloquentTask->id,
-                $eloquentTask->user_id,
-                $eloquentTask->name,
-                $eloquentTask->status,
-                $eloquentTask->due_date->toDateTimeImmutable(),
-                $eloquentTask->post_pone_count,
+            $taskList[] = Task::create(
+                taskId: $eloquentTask->id,
+                userId: $eloquentTask->user_id,
+                name: $eloquentTask->name,
+                status: $eloquentTask->status,
+                dueDate: $eloquentTask->due_date->toDateTimeImmutable(),
+                postponeCount: $eloquentTask->post_pone_count,
             );
         }
 

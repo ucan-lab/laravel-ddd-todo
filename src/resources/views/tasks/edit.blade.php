@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Task Edit')
+@section('title', __('views.tasks.edit.title'))
 
 @section('main')
     <div class="uk-container uk-margin-top">
@@ -9,14 +9,14 @@
             @method('put')
 
             <div class="uk-margin">
-                <label class="uk-form-label" for="form-stacked-text">Name</label>
+                <label class="uk-form-label" for="form-stacked-text">{{ __('views.tasks.edit.name') }}</label>
                 <div class="uk-form-controls">
                     <input name="name" class="uk-input" id="form-stacked-text" type="text" value="{{ $taskName }}">
                 </div>
             </div>
 
             <div class="uk-margin">
-                <button class="uk-button uk-button-primary" type="submit">更新</button>
+                <button class="uk-button uk-button-primary" type="submit">{{ __('views.tasks.edit.update') }}</button>
             </div>
         </form>
     </div>

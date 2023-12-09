@@ -13,7 +13,8 @@ use Todo\Domain\Model\User\UserId;
  */
 final readonly class Task
 {
-    public function __construct(
+    // 完全コンストラクタ
+    private function __construct(
         private TaskId $id,
         private UserId $userId,
         private string $name,
@@ -21,6 +22,24 @@ final readonly class Task
         private DateTimeImmutable $dueDate,
         private PostponeCount $postponeCount,
     ) {
+    }
+
+    public static function create(
+        string $taskId,
+        string $userId,
+        string $name,
+        string $status,
+        DateTimeImmutable $dueDate,
+        int $postponeCount,
+    ): self {
+        return new self(
+            new TaskId($taskId),
+            new UserId($userId),
+            $name,
+            Status::from($status),
+            clone $dueDate,
+            new PostponeCount($postponeCount),
+        );
     }
 
     /**
@@ -57,6 +76,7 @@ final readonly class Task
             throw new LogicException('既にタスクが完了しています。');
         }
 
+        // 不変なオブジェクト(イミュータブル)
         return new self(
             id: $this->id,
             userId: $this->userId,

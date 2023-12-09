@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 final class Handler extends ExceptionHandler
@@ -45,5 +47,23 @@ final class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e) {
         });
+    }
+
+    /**
+     * @param $request
+     * @param Throwable $e
+     * @return Response
+     * @throws Throwable
+     */
+    public function render($request, Throwable $e): Response
+    {
+        if ($e instanceof TokenMismatchException) {
+            return redirect()
+                ->back()
+                ->withInput($request->except('password', 'password_confirmation', '_token'))
+                ->with(['error' => 'Your form has expired. Please try again']);
+        }
+
+        return parent::render($request, $e);
     }
 }

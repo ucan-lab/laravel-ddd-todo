@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Todo\Application\Service\Task;
 
-use Todo\Domain\Model\ActivityReport\ActivityReportFactory;
-use Todo\Domain\Model\ActivityReport\ActivityReportRepository;
-use Todo\Domain\Model\Task\TaskFactory;
+use Todo\Domain\Model\Task\Status;
+use Todo\Domain\Model\Task\Task;
 use Todo\Domain\Model\Task\TaskRepository;
+use Todo\Lang\UlidGenerator;
 
 /**
  * タスクを作成する
@@ -15,28 +15,22 @@ use Todo\Domain\Model\Task\TaskRepository;
 final readonly class CreateTaskUseCase
 {
     public function __construct(
-        private TaskFactory $taskFactory,
         private TaskRepository $taskRepository,
-        private ActivityReportFactory $activityReportFactory,
-        private ActivityReportRepository $activityReportRepository,
     ) {
     }
 
     public function createTask(CreateTaskUseCaseInput $input): CreateTaskUseCaseOutput
     {
-        $task = $this->taskFactory->create(
-            $input->userId,
-            $input->name,
-            $input->dueDate
+        $task = Task::create(
+            taskId: UlidGenerator::generate(),
+            userId: $input->userId,
+            name: $input->name,
+            status: Status::Undone->value,
+            dueDate: $input->dueDate,
+            postponeCount: 0,
         );
 
         $this->taskRepository->store($task);
-
-        $activityReport = $this->activityReportFactory->createTask(
-            $task,
-        );
-
-        $this->activityReportRepository->create($activityReport);
 
         return new CreateTaskUseCaseOutput();
     }

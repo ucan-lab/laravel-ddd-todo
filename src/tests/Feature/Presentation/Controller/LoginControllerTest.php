@@ -18,7 +18,7 @@ final class LoginControllerTest extends TestCase
 
         $data = [
             'email' => 'test@example.com',
-            'password' => 'password',
+            'password' => 'P@ssw0rd',
         ];
 
         $this->post('/login', $data)

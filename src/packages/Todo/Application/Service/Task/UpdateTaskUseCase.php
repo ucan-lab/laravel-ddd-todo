@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Todo\Application\Service\Task;
 
-use Todo\Domain\Model\ActivityReport\ActivityReportFactory;
-use Todo\Domain\Model\ActivityReport\ActivityReportRepository;
 use Todo\Domain\Model\Task\AnotherUsersTaskException;
 use Todo\Domain\Model\Task\TaskRepository;
 use Todo\Domain\Model\User\UserRepository;
@@ -18,8 +16,6 @@ final readonly class UpdateTaskUseCase
     public function __construct(
         private UserRepository $userRepository,
         private TaskRepository $taskRepository,
-        private ActivityReportFactory $activityReportFactory,
-        private ActivityReportRepository $activityReportRepository,
     ) {
     }
 
@@ -35,12 +31,6 @@ final readonly class UpdateTaskUseCase
         $updatedTask = $task->changeTaskName($input->taskName);
 
         $this->taskRepository->store($updatedTask);
-
-        $activityReport = $this->activityReportFactory->updateTask(
-            $task,
-        );
-
-        $this->activityReportRepository->create($activityReport);
 
         return new UpdateTaskUseCaseOutput();
     }

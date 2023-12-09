@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Login')
+@section('title', __('views.auth.sign_in.title'))
 @section('header', '')
 
 @section('main')
@@ -10,7 +10,7 @@
                 <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
                     <div class="uk-width-1-1@m">
                         <div class="uk-margin uk-width-xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
-                            <h3 class="uk-card-title uk-text-center">Task App Login</h3>
+                            <h3 class="uk-card-title uk-text-center">{{ __('views.auth.sign_in.title') }}</h3>
                             <form action="{{ route('login') }}" method="post">
                                 @csrf
 
@@ -27,16 +27,16 @@
                                     </div>
                                 </div>
                                 <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                                    <label><input name="remember" class="uk-checkbox" type="checkbox"> Remember me</label>
+                                    <label><input name="remember" class="uk-checkbox" type="checkbox"> {{ __('views.auth.sign_in.remember_me') }}</label>
                                 </div>
                                 <div class="uk-margin">
-                                    <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Login</button>
+                                    <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1">{{ __('views.auth.sign_in.sign_in') }}</button>
                                 </div>
                                 <div class="uk-text-small uk-text-center">
-                                    Not registered? <a href="{{ route('sign-up') }}">Create an account</a>
+                                    {{ __('views.auth.sign_in.not_sign_up') }} <a href="{{ route('sign-up') }}">{{ __('views.auth.sign_in.sign_up') }}</a>
                                 </div>
                                 <div class="uk-text-small uk-text-center">
-                                    Forgot password? <a href="{{ route('password.request') }}">Send password resets</a>
+                                    {{ __('views.auth.sign_in.forgot_password') }} <a href="{{ route('password.request') }}">{{ __('views.auth.sign_in.send_password_resets') }}</a>
                                 </div>
                             </form>
                         </div>

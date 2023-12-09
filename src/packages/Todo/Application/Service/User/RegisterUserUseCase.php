@@ -6,9 +6,11 @@ namespace Todo\Application\Service\User;
 
 use Throwable;
 use Todo\Domain\Model\User\DuplicateUserException;
-use Todo\Domain\Model\User\UserFactory;
+use Todo\Domain\Model\User\PlainPassword;
+use Todo\Domain\Model\User\User;
 use Todo\Domain\Model\User\UserRepository;
 use Todo\Domain\Service\User\CheckDuplicateUserService;
+use Todo\Lang\UlidGenerator;
 use Todo\Lang\UnitOfWork;
 
 final readonly class RegisterUserUseCase
@@ -16,7 +18,6 @@ final readonly class RegisterUserUseCase
     public function __construct(
         private UnitOfWork $unitOfWork,
         private CheckDuplicateUserService $checkDuplicateUserService,
-        private UserFactory $userFactory,
         private UserRepository $userRepository,
     ) {
     }
@@ -26,10 +27,11 @@ final readonly class RegisterUserUseCase
      */
     public function register(RegisterUserUseCaseInput $input): RegisterUserUseCaseOutput
     {
-        $user = $this->userFactory->create(
+        $user = User::create(
+            id: UlidGenerator::generate(),
             name: $input->name,
             email: $input->email,
-            password: $input->password,
+            password: new PlainPassword($input->password),
         );
 
         $this->unitOfWork->transaction(function () use ($user) {
