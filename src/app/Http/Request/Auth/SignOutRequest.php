@@ -6,7 +6,7 @@ namespace App\Http\Request\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-final class LogoutRequest extends FormRequest
+final class SignOutRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
