@@ -19,7 +19,7 @@
             @guest
                 <div class="uk-navbar-right">
                     <ul class="uk-navbar-nav">
-                        <li><a href="{{ route('login') }}">{{ __('views.components.header.sign_in') }}</a></li>
+                        <li><a href="{{ route('sign-in') }}">{{ __('views.components.header.sign_in') }}</a></li>
                         <li><a href="{{ route('sign-up') }}">{{ __('views.components.header.sign_up') }}</a></li>
                     </ul>
                 </div>
@@ -29,7 +29,7 @@
                 <div class="uk-navbar-right">
                     <ul class="uk-navbar-nav">
                         <li><a href="">{{ auth()->user()?->name }}</a></li>
-                        <li><a href="{{ route('logout') }}">{{ __('views.components.header.sign_out') }}</a></li>
+                        <li><a href="{{ route('sign-out') }}">{{ __('views.components.header.sign_out') }}</a></li>
                     </ul>
                 </div>
             @endauth

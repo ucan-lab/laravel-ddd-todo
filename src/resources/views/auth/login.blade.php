@@ -11,7 +11,7 @@
                     <div class="uk-width-1-1@m">
                         <div class="uk-margin uk-width-xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
                             <h3 class="uk-card-title uk-text-center">{{ __('views.auth.sign_in.title') }}</h3>
-                            <form action="{{ route('login') }}" method="post">
+                            <form action="{{ route('sign-in') }}" method="post">
                                 @csrf
 
                                 <div class="uk-margin">

@@ -43,7 +43,7 @@
                                     <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Sign Up</button>
                                 </div>
                                 <div class="uk-text-small uk-text-center">
-                                    Already have an account? <a href="{{ route('login') }}" uk-switcher-item="1">Log in</a>
+                                    Already have an account? <a href="{{ route('sign-in') }}" uk-switcher-item="1">Log in</a>
                                 </div>
                             </form>
                         </div>
