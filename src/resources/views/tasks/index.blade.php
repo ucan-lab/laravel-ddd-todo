@@ -17,7 +17,6 @@
             <thead>
                 <tr>
                     <th class="uk-width-auto">{{ __('views.tasks.index.task_list.task_name') }}</th>
-                    <th class="uk-width-1-6">{{ __('views.tasks.index.task_list.status') }}</th>
                     <th class="uk-width-1-6">{{ __('views.tasks.index.task_list.due_date') }}</th>
                     <th class="uk-width-1-6">{{ __('views.tasks.index.task_list.postpone_count') }}</th>
                     <th class="uk-width-1-6">{{ __('views.tasks.index.task_list.actions') }}</th>
@@ -26,8 +25,7 @@
             <tbody>
                 @forelse($taskList as $task)
                     <tr>
-                        <td>{{ $task['name'] }}</td>
-                        <td>{{ __('views.tasks.index.status.' . $task['status']) }}</td>
+                        <td>{{ $task['name'] }}<span class="uk-badge uk-alert-danger">{{ $task['status'] }}</span></td>
                         <td>{{ $task['dueDate'] }}</td>
                         <td class="uk-text-right">{{ $task['postponeCount'] }}</td>
                         <td>

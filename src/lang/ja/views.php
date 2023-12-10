@@ -5,7 +5,7 @@ declare(strict_types=1);
 return [
     'auth' => [
         'sign_in' => [
-            'title' => 'サインイン',
+            'title' => 'Todo App',
             'remember_me' => 'ブラウザに記憶する',
             'sign_in' => 'サインイン',
             'not_sign_up' => 'ユーザー登録していない方は',

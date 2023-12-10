@@ -1,0 +1,31 @@
+.done {
+    box-sizing: border-box;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 500px;
+    vertical-align: middle;
+    background-color:#f8f8f8;
+    color:#fff;
+    font-size: 11px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 0;
+}
+
+.undone {
+    box-sizing: border-box;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 500px;
+    vertical-align: middle;
+    background-color:#f0506e;
+    color:#fff;
+    font-size: 11px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 0;
+}
