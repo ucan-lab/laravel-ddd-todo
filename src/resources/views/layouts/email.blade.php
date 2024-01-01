@@ -2,9 +2,9 @@
 <html lang="ja">
 <head>
     <title>@yield('content')</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="target-densitydpi=device-dpi,width=device-width,maximum-scale=1.0,user-scalable=yes">
     <meta http-equiv="Content-Language" content="ja">
-    <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.15.13/css/uikit.min.css" />
 </head>
 <body>

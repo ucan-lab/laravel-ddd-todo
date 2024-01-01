@@ -25,7 +25,7 @@
             <tbody>
                 @forelse($taskList as $task)
                     <tr>
-                        <td>{{ $task['name'] }}<span class="uk-badge uk-alert-danger">{{ $task['status'] }}</span></td>
+                        <td>{{ $task['name'] }}<span class="{{ $task['status'] }}">{{ $task['status'] }}</span></td>
                         <td>{{ $task['dueDate'] }}</td>
                         <td class="uk-text-right">{{ $task['postponeCount'] }}</td>
                         <td>
